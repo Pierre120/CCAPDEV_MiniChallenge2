@@ -24,6 +24,9 @@ $(document).ready(function() {
 
 		// Get the filtered expense list
 		let filteredList = filterExpenseList(category);
+		for(let exp of filteredList) {
+			console.log(exp.item)
+		}
 	});
 
 	// Set the date input field's value to current date
@@ -73,10 +76,9 @@ $(document).ready(function() {
 			date: $('#date').val(),
 			category: $('#category').val(),
 			item: $('#item').val(),
-			amount: parseFloat($('#amount').val()).toFixed(2),
+			amount: parseFloat($('#amount').val()),
 		}
-		console.log(typeof newExpense.amount);
-		console.log(newExpense.amount);
+
 		// Push new expense item in `expenses` array
 		expenses.push(newExpense);
 
@@ -96,6 +98,8 @@ $(document).ready(function() {
 	}
 
 	function updateTotalExpenses(expenseAmount) {
+		console.log(typeof expenseAmount);
+		console.log(expenseAmount)
 		sum += expenseAmount;
 		$('#total').text(sum.toFixed(2));
 	}
