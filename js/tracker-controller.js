@@ -78,7 +78,7 @@ $(document).ready(function() {
 	// For clearing the description and amount input fields
 	function resetForm() {
 		setCurrentDate();
-		$('#filter option').first().attr('selected', 'selected');
+		$('#category').children().eq(0).prop('selected', 'selected');
 		$('#item').val('');
 		$('#amount').val('');
 	}
