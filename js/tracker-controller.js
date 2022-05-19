@@ -18,15 +18,12 @@ $(document).ready(function() {
 	});
 
 	// Clicking the category filter
-	$('#category option').click(function() {
+	$('#filter option').click(function() {
 		// Get the category to fliter
 		let category = $(this).val();
 
 		// Get the filtered expense list
 		let filteredList = filterExpenseList(category);
-		for(let exp of filteredList) {
-			console.log(exp.item)
-		}
 	});
 
 	// Set the date input field's value to current date
@@ -98,8 +95,6 @@ $(document).ready(function() {
 	}
 
 	function updateTotalExpenses(expenseAmount) {
-		console.log(typeof expenseAmount);
-		console.log(expenseAmount)
 		sum += expenseAmount;
 		$('#total').text(sum.toFixed(2));
 	}
@@ -108,6 +103,7 @@ $(document).ready(function() {
 		// Filter callback functions
 		let filterCBs = {
 			food: function(expenseObj, index, array) {
+				console.log(expenseObj)
 				return expenseObj.category === 'food';
 			},
 			transpo: function(expenseObj, index, array) {
@@ -120,6 +116,17 @@ $(document).ready(function() {
 
 		// Filtered expenses array
 		return expenses.filter(filterCBs[category]);
+	}
+
+	function updateFilterListDisplay(expenseList) {
+		$('#list').empty();
+		total = 0;
+		for(let expense of expenseList) {
+			addExpenseToViewList(expense);
+			total += expense.amount;
+		}
+
+		updateTotalExpenses(total);
 	}
   
 });
