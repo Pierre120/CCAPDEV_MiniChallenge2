@@ -57,14 +57,26 @@ $(document).ready(function() {
 	}
 
 	// For storing the new expense in the expense list/log
-	function storeNewExpense() {
-		// Push new expense item in `expenses` array
-		expenses.push({
+	function storeAndDisplayNewExpense() {
+		let newExpense = {
 			date: $('#date').val(),
 			category: $('#category').val(),
 			item: $('#item').val(),
 			amount: $('#amount').val(),
-		});
+		}
+		// Push new expense item in `expenses` array
+		expenses.push(newExpense);
+
+		addExpenseToViewList(newExpense);
+	}
+
+	function addExpenseToViewList(expense) {
+		let newItem = $('<div></div>').addClass('expenseItem ' + expense.category)
+											.prepend($('<span></span>').addClass('datecol').text(expense.date)
+											.append($('<span></span>').addClass('itemcol').text(expense.item)
+											.append($('<span></span>').addClass('amountcol').text(expense.amount)))
+											.html());
+		console.log(newItem);
 	}
     
 });
