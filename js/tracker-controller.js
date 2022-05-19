@@ -88,7 +88,7 @@ $(document).ready(function() {
 		let newExpense = {
 			date: $('#date').val(),
 			category: $('#category').val(),
-			item: $('#item').val(),
+			description: $('#item').val(),
 			amount: parseFloat($('#amount').val()),
 		}
 
@@ -103,10 +103,10 @@ $(document).ready(function() {
 	// Adding/appending expense item to list
 	function addExpenseToViewList(expense) {
 		let date = $('<span></span>').addClass('datecol').text(expense.date);
-		let item = $('<span></span>').addClass('itemcol').text(expense.item);
+		let description = $('<span></span>').addClass('itemcol').text(expense.description);
 		let amount = $('<span></span>').addClass('amountcol').text(expense.amount);
 		let newItem = $('<div></div>').addClass('expenseItem ' + expense.category)
-											.append(date, item, amount);
+											.append(date, description, amount);
 		
 		$('#list').append(newItem);
 	}
