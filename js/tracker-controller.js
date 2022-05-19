@@ -37,8 +37,8 @@ $(document).ready(function() {
 		$('#error').text('');
 		$('#item').css('border-color','#DDDDDD');
 		$('#amount').css('border-color','#DDDDDD');
-		console.log($('#amount'));
-		console.log($('#amount').css('border-color','#DDDDDD'));
+		console.log($('#amount').html());
+		console.log($('#amount').css('border-color','#DDDDDD').html());
 
 		// Check if item input is empty
 		if($('#item').val() === '') {
@@ -74,12 +74,14 @@ $(document).ready(function() {
 	}
 
 	function addExpenseToViewList(expense) {
+		let date = $('<span></span>').addClass('datecol').text(expense.date);
+		let item = $('<span></span>').addClass('itemcol').text(expense.item);
+		let amount = $('<span></span>').addClass('amountcol').text(expense.amount);
 		let newItem = $('<div></div>').addClass('expenseItem ' + expense.category)
-											.prepend($('<span></span>').addClass('datecol').text(expense.date)
-											.append($('<span></span>').addClass('itemcol').text(expense.item)
-											.append($('<span></span>').addClass('amountcol').text(expense.amount)))
-											.html());
-		console.log(newItem);
+											.prepend(date, item, amount);
+		
+		$('#list').prepend(newItem);
+		console.log(newItem.html());
 	}
     
 });
