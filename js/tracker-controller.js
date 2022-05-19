@@ -26,7 +26,6 @@ $(document).ready(function() {
 		// This creates a date object with an initialized value of the date today
 		var today = new Date();
 		var formattedDate = today.getFullYear().toString() + '-' + (today.getMonth() + 1).toString().padStart(2, 0) + '-' + today.getDate().toString().padStart(2, 0);
-		console.log(formattedDate);
 
 		// Set the formattedDate value to the date input field's value
 		$('#date').val(formattedDate);
@@ -38,8 +37,6 @@ $(document).ready(function() {
 		$('#error').text('');
 		$('#item').css('border-color','#DDDDDD');
 		$('#amount').css('border-color','#DDDDDD');
-		console.log($('#amount').html());
-		console.log($('#amount').css('border-color','#DDDDDD').html());
 
 		// Check if item input is empty
 		if($('#item').val() === '') {
@@ -82,7 +79,6 @@ $(document).ready(function() {
 											.prepend(date, item, amount);
 		
 		$('#list').prepend(newItem);
-		console.log(newItem.html());
 	}
     
 });
