@@ -14,6 +14,8 @@ $(document).ready(function() {
 		// Adding of item in item list
 		if(isValid) {
 			updateAndDisplay();
+			// clearing the form input fields
+			clearForm()
 		}
 	});
 
@@ -23,7 +25,13 @@ $(document).ready(function() {
 		let category = $(this).val();
 
 		// Get the filtered expense list
-		let filteredList = filterExpenseList(category);
+		let filteredList = expenses;
+		
+		if(category !== 'all') {
+			filteredList = filterExpenseList(category);
+		}
+
+		updateFilterListDisplay(filteredList);
 	});
 
 	// Set the date input field's value to current date
@@ -67,6 +75,12 @@ $(document).ready(function() {
 		return true;
 	}
 
+	// For clearing the description and amount input fields
+	function clearForm() {
+		$('#item').val('');
+		$('#amount').val('');
+	}
+
 	// For storing the new expense in the expense list/log
 	function updateAndDisplay() {
 		let newExpense = {
@@ -84,6 +98,7 @@ $(document).ready(function() {
 		updateTotalExpenses(newExpense.amount);
 	}
 
+	// Adding/appending expense item to list
 	function addExpenseToViewList(expense) {
 		let date = $('<span></span>').addClass('datecol').text(expense.date);
 		let item = $('<span></span>').addClass('itemcol').text(expense.item);
@@ -94,11 +109,13 @@ $(document).ready(function() {
 		$('#list').append(newItem);
 	}
 
+	// updating the total expense
 	function updateTotalExpenses(expenseAmount) {
 		sum += expenseAmount;
 		$('#total').text(sum.toFixed(2));
 	}
 
+	// Callback function for the array filter method
 	function filterExpenseList(category) {
 		// Filter callback functions
 		let filterCBs = {
@@ -118,15 +135,14 @@ $(document).ready(function() {
 		return expenses.filter(filterCBs[category]);
 	}
 
+	// For updating the list display when filtering
 	function updateFilterListDisplay(expenseList) {
 		$('#list').empty();
-		total = 0;
+		sum = 0;
 		for(let expense of expenseList) {
 			addExpenseToViewList(expense);
-			total += expense.amount;
+			updateTotalExpenses(expense.amount);
 		}
-
-		updateTotalExpenses(total);
 	}
   
 });
