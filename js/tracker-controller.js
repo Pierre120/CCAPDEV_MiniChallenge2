@@ -12,7 +12,7 @@ $(document).ready(function() {
 		validateForm();
 
 		// Adding of item in item list
-		storeAndDisplayNewExpense();
+		updateAndDisplay();
 	});
 
 	// Set the date input field's value to current date
@@ -58,7 +58,7 @@ $(document).ready(function() {
 	}
 
 	// For storing the new expense in the expense list/log
-	function storeAndDisplayNewExpense() {
+	function updateAndDisplay() {
 		let newExpense = {
 			date: $('#date').val(),
 			category: $('#category').val(),
