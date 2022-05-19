@@ -30,6 +30,7 @@ $(document).ready(function() {
 		$('#date').val(formattedDate);
 	}
 
+	// For form validation
 	function validateForm() {
 		// Clearing error messages and highlights
 		$('#error').text('');
@@ -53,6 +54,17 @@ $(document).ready(function() {
 			return false;
 		}
 		return true;
+	}
+
+	// For storing the new expense in the expense list/log
+	function storeNewExpense() {
+		// Push new expense item in `expenses` array
+		expenses.push({
+			date: $('#date').val(),
+			category: $('#category').val(),
+			item: $('#item').val(),
+			amount: $('#amount').val(),
+		});
 	}
     
 });
