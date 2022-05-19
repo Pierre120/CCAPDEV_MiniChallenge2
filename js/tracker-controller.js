@@ -19,7 +19,9 @@ $(document).ready(function() {
 
 	// Clicking the category filter
 	$('#category option').click(function() {
+		// Get the category to fliter
 		let category = $(this).val();
+
 	});
 
 	// Set the date input field's value to current date
@@ -94,6 +96,24 @@ $(document).ready(function() {
 	function updateTotalExpenses(expenseAmount) {
 		sum += expenseAmount;
 		$('#total').text(sum.toFixed(2));
+	}
+
+	function filterExpenseList(category) {
+		// Filter callback functions
+		let filterCBs = {
+			food: function(expenseObj, index, array) {
+				return expenseObj.category === 'food';
+			},
+			transpo: function(expenseObj, index, array) {
+				return expenseObj.category === 'transpo';
+			},
+			bills: function(expenseObj, index, array) {
+				return expenseObj.category === 'bills';
+			}
+		};
+
+		// Filtered expenses array
+		return expenses.filter(filterCBs[category]);
 	}
   
 });
