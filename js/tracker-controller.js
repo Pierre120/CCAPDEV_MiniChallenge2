@@ -22,6 +22,8 @@ $(document).ready(function() {
 		// Get the category to fliter
 		let category = $(this).val();
 
+		// Get the filtered expense list
+		let filteredList = filterExpenseList(category);
 	});
 
 	// Set the date input field's value to current date
