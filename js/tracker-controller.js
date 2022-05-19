@@ -9,6 +9,7 @@ $(document).ready(function() {
 	// Clicking the submit button
 	$('#submit').click(function() {
 		// Form validation
+		validateForm();
 
 		// Adding of item in item list
 	});
@@ -36,6 +37,8 @@ $(document).ready(function() {
 		$('#error').text('');
 		$('#item').css('border-color','#DDDDDD');
 		$('#amount').css('border-color','#DDDDDD');
+		console.log($('#amount'));
+		console.log($('#amount').css('border-color','#DDDDDD'));
 
 		// Check if item input is empty
 		if($('#item').val() === '') {
