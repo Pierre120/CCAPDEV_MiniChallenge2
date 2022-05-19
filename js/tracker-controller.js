@@ -15,7 +15,7 @@ $(document).ready(function() {
 		if(isValid) {
 			updateAndDisplay();
 			// clearing the form input fields
-			clearForm()
+			resetForm()
 		}
 	});
 
@@ -76,7 +76,9 @@ $(document).ready(function() {
 	}
 
 	// For clearing the description and amount input fields
-	function clearForm() {
+	function resetForm() {
+		setCurrentDate();
+		$('#filter option').first().attr('selected', 'selected');
 		$('#item').val('');
 		$('#amount').val('');
 	}
