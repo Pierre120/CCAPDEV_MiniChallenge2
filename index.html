@@ -7,27 +7,8 @@
 		
 		<!-- IMPORT JQUERY (from CDN or download it) -->
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-		
-		<script type="text/javascript">
-			// Insert your javascript/jquery code here
-			
-			// This will store all the expenses locally
-			var expenses = [];
-			var sum = 0;
 
-			$(document).ready(function() {
-
-				// This creates a date object with an initialized value of the date today
-				var today = new Date();
-				var formattedDate = today.getFullYear().toString() + '-' + (today.getMonth() + 1).toString().padStart(2, 0) + '-' + today.getDate().toString().padStart(2, 0);
-
-				// Set the formattedDate value to the date input field's value
-
-
-				// Place all functions and validations here
-				
-			})
-		</script>
+		<script type="text/javascript" src="js/tracker-controller.js"></script>
 	</head>
 	
 	<body>
