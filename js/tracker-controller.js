@@ -12,6 +12,7 @@ $(document).ready(function() {
 		validateForm();
 
 		// Adding of item in item list
+		storeAndDisplayNewExpense();
 	});
 
 	// Set the date input field's value to current date
