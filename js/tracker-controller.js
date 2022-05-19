@@ -17,9 +17,13 @@ $(document).ready(function() {
 		}
 	});
 
+	// Clicking the category filter
+	$('#category option').click(function() {
+		let category = $(this).val();
+	});
+
 	// Set the date input field's value to current date
 	setCurrentDate();
-
 
 	// Place all functions and validations here
 
