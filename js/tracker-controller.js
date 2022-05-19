@@ -9,10 +9,12 @@ $(document).ready(function() {
 	// Clicking the submit button
 	$('#submit').click(function() {
 		// Form validation
-		validateForm();
+		let isValid = validateForm();
 
 		// Adding of item in item list
-		updateAndDisplay();
+		if(isValid) {
+			updateAndDisplay();
+		}
 	});
 
 	// Set the date input field's value to current date
