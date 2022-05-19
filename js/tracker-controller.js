@@ -65,7 +65,7 @@ $(document).ready(function() {
 			date: $('#date').val(),
 			category: $('#category').val(),
 			item: $('#item').val(),
-			amount: parseInt($('#amount').val()).toFixed(2),
+			amount: parseFloat($('#amount').val()).toFixed(2),
 		}
 		console.log(typeof newExpense.amount);
 		console.log(newExpense.amount);
@@ -74,7 +74,7 @@ $(document).ready(function() {
 
 		addExpenseToViewList(newExpense);
 
-		updateTotalExpenses(parseInt(newExpense.amount));
+		updateTotalExpenses(newExpense.amount);
 	}
 
 	function addExpenseToViewList(expense) {
@@ -91,5 +91,5 @@ $(document).ready(function() {
 		sum += expenseAmount;
 		$('#total').text(sum.toFixed(2));
 	}
-    
+  
 });
