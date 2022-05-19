@@ -47,7 +47,7 @@ $(document).ready(function() {
 			return false;
 		}
 		// Check if amount input is empty
-		if($('#amount').val() === '') {
+		if($('#amount').val() === '' || $('#amount').val() === NaN) {
 			// Apply style for input error
 			$('#amount').css('border-color','#B00000');
 			// Display error message
@@ -63,12 +63,16 @@ $(document).ready(function() {
 			date: $('#date').val(),
 			category: $('#category').val(),
 			item: $('#item').val(),
-			amount: $('#amount').val(),
+			amount: parseInt($('#amount').val()).toFixed(2),
 		}
+		console.log(typeof newExpense.amount);
+		console.log(newExpense.amount);
 		// Push new expense item in `expenses` array
 		expenses.push(newExpense);
 
 		addExpenseToViewList(newExpense);
+
+		updateTotalExpenses(parseInt(newExpense.amount));
 	}
 
 	function addExpenseToViewList(expense) {
@@ -76,9 +80,14 @@ $(document).ready(function() {
 		let item = $('<span></span>').addClass('itemcol').text(expense.item);
 		let amount = $('<span></span>').addClass('amountcol').text(expense.amount);
 		let newItem = $('<div></div>').addClass('expenseItem ' + expense.category)
-											.prepend(date, item, amount);
+											.append(date, item, amount);
 		
-		$('#list').prepend(newItem);
+		$('#list').append(newItem);
+	}
+
+	function updateTotalExpenses(expenseAmount) {
+		sum += expenseAmount;
+		$('#total').text(sum.toFixed(2));
 	}
     
 });
